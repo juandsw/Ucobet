@@ -11,8 +11,8 @@
 	<groupId>co.edu.uco.ucobet</groupId>
 	<artifactId>ucobet-generales</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ucobet</name>
-	<description>Microservicio para soportar los casos de uso en contextos generales</description>
+	<name>UCOBet</name>
+	<description>Microservicio para soportar los casos de uso del contexto generales.</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -30,6 +30,17 @@
 		<java.version>23</java.version>
 	</properties>
 	<dependencies>
+		<dependency>
+    		<groupId>org.mapstruct</groupId>
+    		<artifactId>mapstruct</artifactId>
+    		<version>1.5.5.Final</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.mapstruct</groupId>
+    		<artifactId>mapstruct-processor</artifactId>
+    		<version>1.5.5.Final</version>
+    		<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -51,6 +62,11 @@
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
