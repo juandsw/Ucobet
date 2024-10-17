@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.data.repository;
+package co.edu.uco.ucobet.generales.application.secondaryports.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
-import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepositoryCustom;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.DataUcobetException;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
@@ -26,7 +25,7 @@ public class CityRepositoryImpl implements CityRepositoryCustom{
 
 
 	@Override
-	public List<CityEntity> findByFilter(CityEntity filter) {
+	public List<CityEntity> selectByFilter(CityEntity filter) {
 		
 		try {
 			var criteriaBuilder = entityManager.getCriteriaBuilder();
