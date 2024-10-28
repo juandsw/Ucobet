@@ -9,7 +9,7 @@ import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
 @Repository
 public interface CityRepositoryCustom {
 	
-	List<CityEntity> selectByFilter(CityEntity filter);
+	List<CityEntity> SelectByFilter(CityEntity filter);
 
 
 

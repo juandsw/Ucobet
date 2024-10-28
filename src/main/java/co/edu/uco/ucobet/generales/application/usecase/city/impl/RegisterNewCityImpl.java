@@ -1,11 +1,15 @@
 package co.edu.uco.ucobet.generales.application.usecase.city.impl;
 
+import org.springframework.stereotype.Service;
+
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
+import co.edu.uco.ucobet.generales.application.secondaryports.mapper.StateEntityMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
 import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCity;
 import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCityValidator;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 
+@Service
 public final class RegisterNewCityImpl implements RegisterNewCity {
 	
 	private CityRepository cityRepository;
@@ -24,8 +28,10 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 		//Validar reglas de negocio
 		registerNewCityValidator.validate(data);
 		
+		var id = data.getId();
+		
 		//Mapper de domain a entity
-		CityEntity cityEntity = CityEntity.create();
+		var cityEntity = CityEntity.create().setId(id).setName(data.getName()).setState(StateEntityMapper.INSTANCE.toEntity(data.getState()));
 		
 		//Registrar la ciudad
 		cityRepository.save(cityEntity);

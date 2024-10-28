@@ -8,7 +8,6 @@ import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
-
 public interface RegisterNewCityInteractor extends InteractorWithoutReturn<RegisterNewCityDto> {
 
 }

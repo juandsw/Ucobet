@@ -10,10 +10,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import com.azure.security.keyvault.secrets.SecretClient;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = {"package co.edu.uco.ucobet.generales.application.secondaryports.repository"})
-@EntityScan(basePackages = {"package co.edu.uco.ucobet.generales.application.secondaryports.entity"})
-@ComponentScan(basePackages = {"co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller", 
-                               "co.edu.uco.ucobet.generales.init.config" })
+@EnableJpaRepositories(basePackages = {"co.edu.uco.ucobet.generales.application.secondaryports.repository"})
+@EntityScan(basePackages = {"co.edu.uco.ucobet.generales.application.secondaryports.entity"})
+@ComponentScan(basePackages = {"co.edu.uco.ucobet.generales" })
 public class UcobetApplication implements CommandLineRunner {
 
     private final SecretClient secretClient;

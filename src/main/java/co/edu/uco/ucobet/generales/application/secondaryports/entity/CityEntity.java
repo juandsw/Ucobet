@@ -9,6 +9,8 @@ import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -16,9 +18,10 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "City")
-public final class CityEntity {
+public class CityEntity {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private UUID id;
 	
@@ -59,29 +62,33 @@ public final class CityEntity {
 		return new CityEntity(id, name, state);
 		
 	}
+	
 
 	public UUID getId() {
 		return id;
 	}
-
-	public void setId(UUID id) {
+	
+	public CityEntity setId(final UUID id) {
 		this.id = UUIDHelper.getDefault();
+		return this;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = TextHelper.getDefault(name, TextHelper.EMPTY);
+	public CityEntity setName(String name) {
+		this.name = TextHelper.applyTrim(name);
+		return this;
 	}
 
 	public StateEntity getState() {
 		return state;
 	}
 
-	public void setState(StateEntity state) {
+	public CityEntity setState(StateEntity state) {
 		this.state = ObjectHelper.getDefault(state, StateEntity.create());
+		return this;
 	}
 	
 	
