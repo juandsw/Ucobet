@@ -17,5 +17,8 @@ public class Domain {
 	private void setId(final UUID id) {
 		this.id = id;
 	}
+	public void generateId() {
+		this.id = id;
+	}
 
 }

@@ -5,18 +5,18 @@ import java.util.UUID;
 import co.edu.uco.ucobet.generales.domain.Domain;
 import co.edu.uco.ucobet.generales.domain.country.CountryDomain;
 
-public final class StateDomain extends Domain {
+public class StateDomain extends Domain {
 	
 	private String name;
 	private CountryDomain country;
 	
-	private StateDomain(final UUID id, final String name, final CountryDomain country) {
+	public StateDomain(final UUID id, final String name, final CountryDomain country) {
 		super(id);
 		setName(name);
 		setCountry(country);
 	}
 	
-	public static final StateDomain crate(final UUID id, final String name, final CountryDomain country) {
+	public static final StateDomain create(final UUID id, final String name, final CountryDomain country) {
 		return new StateDomain(id, name, country);
 	}
 

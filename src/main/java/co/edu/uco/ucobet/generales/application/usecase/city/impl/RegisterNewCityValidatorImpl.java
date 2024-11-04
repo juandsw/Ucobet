@@ -19,51 +19,48 @@ import co.edu.uco.ucobet.generales.domain.state.StateDomain;
 @Service
 public final class RegisterNewCityValidatorImpl implements RegisterNewCityValidator {
 
-	
-	@Autowired
-	private CityIdDoesExistRule cityIdDoesExistRule;
-	@Autowired
-	private CityIdDoesNotExistRule cityIdDoesNotExistRule;
-	@Autowired
-	private CityIdFormatIsValidRule cityIdFormatIsValidRule;
-	@Autowired
-	private CityIdIsEmptyRule cityIdIsEmptyRule;
-	@Autowired
-	private CityIdIsNotEmptyRule cityIdIsNotEmptyRule;
-	@Autowired
-	private CityNameIsUniqueForStateRule cityNameIsUniqueForStateRule;
-	@Autowired
-	private CityStateIsValidRule cityStateIsValidRule;
-	
-	
-	
 	@Override
-	public void validate(final CityDomain data) {
-		
-		validateRulesRelatedWithId(data.getId());
-		validateRulesRelatedWithName(data);
-		validateRulesRelatedWithState(data.getState());
-		
-		
-		
-	}
-	
-	private void validateRulesRelatedWithId(final UUID id) {
-		
-		cityIdDoesNotExistRule.execute(id);
-		cityIdDoesExistRule.execute(id);
-		cityIdFormatIsValidRule.execute(id);
-		cityIdIsNotEmptyRule.execute(id);
-		cityIdIsEmptyRule.execute(id);
-		
+	public void validate(CityDomain data) {
+		// TODO Auto-generated method stub
 	}
 
-	private void validateRulesRelatedWithName(final CityDomain data) {
-		cityNameIsUniqueForStateRule.execute(data);
-		
-	}
 	
-	private void validateRulesRelatedWithState(final StateDomain state) {
-		cityStateIsValidRule.execute(state);
-	}
+//	@Autowired
+//	private CityIdDoesExistRule cityIdDoesExistRule;
+//	@Autowired
+//	private CityIdFormatIsValidRule cityIdFormatIsValidRule;
+//	@Autowired
+//	private CityIdIsNotEmptyRule cityIdIsNotEmptyRule;
+//	@Autowired
+//	private CityNameIsUniqueForStateRule cityNameIsUniqueForStateRule;
+//	@Autowired
+//	private CityStateIsValidRule cityStateIsValidRule;
+//	
+//
+//	
+//	@Override
+//	public void validate(final CityDomain data) {
+//		
+//		validateRulesRelatedWithId(data.getId());
+//		validateRulesRelatedWithName(data);
+//		validateRulesRelatedWithState(data.getState());
+//		
+//	}
+//	
+//	private void validateRulesRelatedWithId(final UUID id) {
+//		
+//		cityIdDoesNotExistRule.execute(id);
+//		cityIdFormatIsValidRule.execute(id);
+//		cityIdIsNotEmptyRule.execute(id);
+//		
+//	}
+//
+//	private void validateRulesRelatedWithName(final CityDomain data) {
+//		cityNameIsUniqueForStateRule.execute(data);
+//		
+//	}
+//	
+//	private void validateRulesRelatedWithState(final StateDomain state) {
+//		cityStateIsValidRule.execute(state);
+//	}
 }

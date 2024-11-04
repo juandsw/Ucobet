@@ -3,7 +3,6 @@ package co.edu.uco.ucobet.generales.domain.city;
 import java.util.UUID;
 
 import co.edu.uco.ucobet.generales.domain.Domain;
-import co.edu.uco.ucobet.generales.domain.country.CountryDomain;
 import co.edu.uco.ucobet.generales.domain.state.StateDomain;
 
 public final class CityDomain extends Domain {
@@ -11,13 +10,14 @@ public final class CityDomain extends Domain {
 	private String name;
 	private StateDomain state;
 	
-	private CityDomain(final UUID id, final String name, final StateDomain state) {
+	public CityDomain(final UUID id, final String name, final StateDomain state) {
+		
 		super(id);
 		setName(name);
 		setState(state);
 	}
 	
-	public static final CityDomain crate(final UUID id, final String name, final StateDomain state) {
+	public static final CityDomain create(final UUID id, final String name, final StateDomain state) {
 		return new CityDomain(id, name, state);
 	}
 
@@ -25,7 +25,7 @@ public final class CityDomain extends Domain {
 		return name;
 	}
 	
-	private final void setName(final String name) {
+	private final void setName(String name) {
 		this.name = name;
 	}
 
@@ -33,9 +33,8 @@ public final class CityDomain extends Domain {
 		return state;
 	}
 
-	private final void setState(final StateDomain state) {
+	private final void setState(StateDomain state) {
 		this.state = state;
 	}
 
-	
 }

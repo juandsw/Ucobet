@@ -13,7 +13,7 @@ public final class CountryDomain extends Domain {
 		setName(name);
 	}
 	
-	public static final CountryDomain crate(final UUID id, final String name) {
+	public static final CountryDomain create(final UUID id, final String name) {
 		return new CountryDomain(id, name);
 	}
 

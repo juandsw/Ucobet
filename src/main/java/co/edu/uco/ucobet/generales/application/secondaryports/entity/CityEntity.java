@@ -2,8 +2,6 @@ package co.edu.uco.ucobet.generales.application.secondaryports.entity;
 
 import java.util.UUID;
 
-import org.hibernate.annotations.ManyToAny;
-
 import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
@@ -32,7 +30,7 @@ public class CityEntity {
 	@JoinColumn(name = "state")
 	private StateEntity state;
 	
-	public CityEntity() {
+	CityEntity() {
 		
 		setId(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
@@ -40,9 +38,11 @@ public class CityEntity {
 	}
 
 	public CityEntity(final UUID id, final String name, final StateEntity state) {
+		
 		setId(id);
 		setName(name);
 		setState(state);
+		
 	}
 	
 	public static final CityEntity create() {

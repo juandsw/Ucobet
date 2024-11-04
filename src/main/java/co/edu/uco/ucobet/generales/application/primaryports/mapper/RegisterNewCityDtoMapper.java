@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
-import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityDto;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.city.RegisterNewCityDto;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 import co.edu.uco.ucobet.generales.domain.state.StateDomain;
 
@@ -16,16 +16,15 @@ public interface RegisterNewCityDtoMapper {
 	
 	RegisterNewCityDtoMapper INSTANCE = Mappers.getMapper(RegisterNewCityDtoMapper.class);
 	
-	@Mapping(source = "state", target = "state", qualifiedByName = "mapState")
-	CityDomain toDomain(RegisterNewCityDto dto);
-	
-	@Named("mapState")
-	default StateDomain mapState(UUID stateId) {
-		
-		return StateDomain.crate(stateId, null, null);
-				
-		
-		
-	}
+    // Mapeo de RegisterNewCityDto a CityDomain
+    @Mapping(source = "state", target = "state", qualifiedByName = "mapState")
+    CityDomain toDomain(RegisterNewCityDto dto);
 
+    // Método personalizado para mapear UUID a StateDomain, anotado con @Named
+    @Named("mapState")
+    default StateDomain mapState(UUID stateId) {
+        // Crear un StateDomain usando solo el UUID, otros valores pueden ser nulos o por defecto
+        return StateDomain.create(stateId, null, null);
+    }
+    
 }

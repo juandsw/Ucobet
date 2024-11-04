@@ -9,6 +9,8 @@ import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -16,9 +18,10 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "State")
-public final class StateEntity {
+public class StateEntity {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private UUID id;
 	
@@ -28,25 +31,28 @@ public final class StateEntity {
 	@ManyToOne
 	@JoinColumn(name = "country")
 	private CountryEntity country;
-
-	public UUID getId() {
-		return id;
-	}
-	
 	
 
 	public StateEntity() {
 		
 		setId(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
-		setCountry(CountryEntity.create());
+		
+	}
+	
+	public StateEntity(final UUID id, final String name) {
+		
+		setId(id);
+		setName(name);
 		
 	}
 	
 	public StateEntity(final UUID id, final String name, final CountryEntity country) {
+		
 		setId(id);
 		setName(name);
 		setCountry(country);
+		
 	}
 	
 	public static final StateEntity create() {
@@ -57,36 +63,48 @@ public final class StateEntity {
 	
 	public static final StateEntity create(final UUID id) {
 		
-		return new StateEntity(id, TextHelper.EMPTY, CountryEntity.create());
+		return new StateEntity(id, TextHelper.EMPTY);
 		
 	}
+	
+	public static final StateEntity create(final UUID id, final String name) {
+		
+		return new StateEntity(id, name);
+		
+	}
+	
 	
 	public static final StateEntity create(final UUID id, final String name, final CountryEntity country) {
 		
 		return new StateEntity(id, name, country);
 		
 	}
+	
+	public UUID getId() {
+		return id;
+	}
 
-
-
-	public void setId(final UUID id) {
+	public StateEntity setId(UUID id) {
 		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
+		return this;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(final String name) {
+	public StateEntity setName(final String name) {
 		this.name = TextHelper.getDefault(name, TextHelper.EMPTY);
+		return this;
 	}
 
 	public CountryEntity getCountry() {
 		return country;
 	}
 
-	public void setCountry(final CountryEntity country) {
+	public StateEntity setCountry(final CountryEntity country) {
 		this.country = ObjectHelper.getDefault(country, CountryEntity.create());
+		return this;
 	}
 	
 	
