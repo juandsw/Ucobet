@@ -9,22 +9,22 @@ public class StateDomain extends Domain {
 	
 	private String name;
 	private CountryDomain country;
-	
-	public StateDomain(final UUID id, final String name, final CountryDomain country) {
+
+	public StateDomain(UUID id, String name, CountryDomain country) {
 		super(id);
-		setName(name);
 		setCountry(country);
+		setName(name);
 	}
-	
-	public static final StateDomain create(final UUID id, final String name, final CountryDomain country) {
+
+	public static final StateDomain create(UUID id, String name, CountryDomain country) {
 		return new StateDomain(id, name, country);
 	}
 
-	public final String getName() {
+	public String getName() {
 		return name;
 	}
-	
-	private final void setName(String name) {
+
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -32,16 +32,8 @@ public class StateDomain extends Domain {
 		return country;
 	}
 
-	private void setCountry(final CountryDomain country) {
+	public void setCountry(CountryDomain country) {
 		this.country = country;
 	}
-
-
-	
-	
-	
-	
-	
-	
 
 }

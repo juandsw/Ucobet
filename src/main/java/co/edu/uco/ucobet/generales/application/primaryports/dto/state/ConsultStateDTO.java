@@ -2,6 +2,8 @@ package co.edu.uco.ucobet.generales.application.primaryports.dto.state;
 
 import java.util.UUID;
 
+import co.edu.uco.ucobet.generales.application.primaryports.dto.country.CountryDTO;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 
@@ -9,26 +11,26 @@ public class ConsultStateDTO {
 	
 	private UUID id;
 	private String name;
-	private UUID country;
+	private CountryDTO country;
 
 	public ConsultStateDTO() {
 		
 		setId(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
-		setCountry(UUIDHelper.getDefault());
+		setCountry(CountryDTO.create());
 		
 	}
 
-	public ConsultStateDTO(final UUID id, final String name, final UUID state) {
+	public ConsultStateDTO(final UUID id, final String name,  final CountryDTO country) {
 		
 		setId(id);
 		setName(name);
-		setCountry(state);
+		setCountry(country);
 		
 	}
 
-	public static final ConsultStateDTO create(final UUID id, final String name, final UUID state) {
-		return new ConsultStateDTO(id, name, state);
+	public static final ConsultStateDTO create(final UUID id, final String name, final CountryDTO country) {
+		return new ConsultStateDTO(id, name, country);
 	}
 	
 	public static final ConsultStateDTO create() {
@@ -50,17 +52,23 @@ public class ConsultStateDTO {
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(final String name) {
+		
 		this.name = TextHelper.applyTrim(name);
+		
 	}
-
-	public UUID getCountry() {
+	
+	public CountryDTO getCountry() {
+		
 		return country;
 	}
 
-	public void setCountry(final UUID country) {
-		this.country = UUIDHelper.getDefault(country, UUIDHelper.getDefault());
+	public void setCountry(final CountryDTO country) {
+		
+		this.country = ObjectHelper.getObjectHelper().getDefault(country, CountryDTO.create());
+				
+	
 	}
 	
 	
