@@ -33,7 +33,7 @@ public class StateRepositoryImpl implements StateRepositoryCustom {
 			
 			var predicates = new ArrayList<>();
 			
-			if(ObjectHelper.isNull(filter)) {
+			if(!ObjectHelper.isNull(filter)) {
 				
                 if(!UUIDHelper.isDefault(filter.getId())) {
                     predicates.add(criteriaBuilder.equal(result.get("id"), filter.getId()));

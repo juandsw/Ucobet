@@ -1,5 +1,6 @@
 package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.city;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.city.RegisterNewCityDto;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
+import co.edu.uco.ucobet.generales.crosscutting.exceptions.RuleUcobetException;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcobetException;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.CityResponse;
@@ -18,11 +20,13 @@ import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.Messag
 
 @RestController
 @RequestMapping("/generales/api/v1/cities")
-@CrossOrigin(origins="http://localhost:4300")
+//@CrossOrigin(origins="http://localhost:4300")
 
 public class RegisterNewCityController {
 	
 	private RegisterNewCityInteractor registerNewCityInteractor;
+	
+	@Autowired
 	private MessageCatalogService messageCatalogService;
 	
 	public RegisterNewCityController(final RegisterNewCityInteractor registerNewCityInteractor, MessageCatalogService messageCatalogService) {
@@ -50,7 +54,7 @@ public class RegisterNewCityController {
 			registerNewCityInteractor.execute(city);
 			cityResponse.getMensajes().add(messageCatalogService.getMessage("welcome"));
 		
-		} catch (final UcobetException exception) {
+		} catch (final RuleUcobetException exception) {
 			
 			httpStatusCode = HttpStatus.BAD_REQUEST;
 			cityResponse.getMensajes().add(exception.getUserMessage());

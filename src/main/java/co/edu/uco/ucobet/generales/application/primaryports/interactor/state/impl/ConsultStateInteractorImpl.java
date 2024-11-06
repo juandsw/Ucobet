@@ -16,10 +16,10 @@ import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcobetException;
 @Transactional
 public class ConsultStateInteractorImpl implements ConsultStateInteractor {
 
-private ConsultState consultStateUseCase;
+	private ConsultState consultStateUseCase;
 	
 	public ConsultStateInteractorImpl (ConsultState consultStateUseCase) {
-		this.consultStateUseCase=consultStateUseCase;
+		this.consultStateUseCase = consultStateUseCase;
 	}
 
 	@Override
@@ -29,12 +29,11 @@ private ConsultState consultStateUseCase;
 			var stateDomain = StateDtoMapper.INSTANCE.toDomain(data);
 			var resultado = consultStateUseCase.execute(stateDomain);
 			return StateDtoMapper.INSTANCE.toDtoCollection(resultado);
+			
 		} catch (UcobetException exception) {
 			var userMessage = "Se ha presentado un problema al consultar la información de los estados";
 			throw DataUcobetException.create(userMessage);
 		}
 	}
-
-
 
 }

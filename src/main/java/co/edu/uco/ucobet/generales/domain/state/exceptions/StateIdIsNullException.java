@@ -13,7 +13,7 @@ public class StateIdIsNullException extends RuleUcobetException {
 	
 	public static final StateIdIsNullException create() {
 		
-		var userMessage = "El id de la ciudad es nulo";
+		var userMessage = "El id del estado es nulo";
 		return new StateIdIsNullException(userMessage, userMessage, new Exception());
 		
 	}

@@ -8,7 +8,6 @@ import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 public class CountryDTO {
 	
 	private UUID id;
-
 	private String name;
 
 	public CountryDTO(final UUID id, final String name) {

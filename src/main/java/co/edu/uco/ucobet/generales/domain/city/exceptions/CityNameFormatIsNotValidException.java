@@ -2,22 +2,17 @@ package co.edu.uco.ucobet.generales.domain.city.exceptions;
 
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RuleUcobetException;
 
-public class CityNameFormatIsNotValidException extends RuleUcobetException {
-
+public final  class CityNameFormatIsNotValidException extends RuleUcobetException {
+	
 	private static final long serialVersionUID = 1L;
 
-	public CityNameFormatIsNotValidException(String technicalMessage, String userMessage, Exception rootException) {
-		super(technicalMessage, userMessage, rootException);
-		
+	private CityNameFormatIsNotValidException(String technicalMessage, String userMessager, Exception rootException) {
+		super(technicalMessage, userMessager, rootException);
 	}
 	
 	public static final CityNameFormatIsNotValidException create() {
-		
-		var userMessage = "El formato del nombre de la ciudad no es válido";
+		var userMessage = "";
 		return new CityNameFormatIsNotValidException(userMessage, userMessage, new Exception());
-		
 	}
-	
-	
 
 }

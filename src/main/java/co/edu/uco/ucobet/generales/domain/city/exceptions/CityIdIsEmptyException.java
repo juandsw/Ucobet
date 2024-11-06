@@ -6,16 +6,13 @@ public class CityIdIsEmptyException extends RuleUcobetException {
 
 	private static final long serialVersionUID = 1L;
 
-	public CityIdIsEmptyException(String technicalMessage, String userMessage, Exception rootException) {
-		super(technicalMessage, userMessage, rootException);
-		
-	}
-	
-	public static final CityIdIsEmptyException create() {
-		
-		var userMessage = "La ciudad tiene un identificador vacío...";
-		return new CityIdIsEmptyException(userMessage, userMessage, new Exception());
-	
+	public CityIdIsEmptyException(String technicalMessage, String userMessager, Exception rootException) {
+		super(technicalMessage, userMessager, rootException);
+
 	}
 
+	public static final CityIdIsEmptyException create() {
+		var userMessage = " ";
+		return new CityIdIsEmptyException(userMessage, userMessage, new Exception());
+	}
 }

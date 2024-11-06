@@ -42,5 +42,11 @@ public class TextHelper {
 		}
 		return sb.toString();
 	}
-
+    public static final boolean longitudMinima ( final String valor, final int longitudMinima) {
+    	return applyTrim(valor).length()>=longitudMinima;
+    }
+    
+    public static final boolean longitudMaxima ( final String valor, final int longitudMaxima) {
+    	return applyTrim(valor).length()<=longitudMaxima;
+    }
 }

@@ -7,15 +7,12 @@ import co.edu.uco.ucobet.generales.domain.city.exceptions.CityNameIsNullExceptio
 import co.edu.uco.ucobet.generales.domain.city.rules.CityNameIsNotNullRule;
 
 @Service
-public class CityNameIsNotNullRuleImpl implements CityNameIsNotNullRule {
+public final class CityNameIsNotNullRuleImpl implements CityNameIsNotNullRule{
 
 	@Override
-	public void execute(String data) {
-		
+	public void execute(final String data) {
 		if(TextHelper.isNull(data)) {
-			
 			throw CityNameIsNullException.create();
-			
 		}
 		
 	}

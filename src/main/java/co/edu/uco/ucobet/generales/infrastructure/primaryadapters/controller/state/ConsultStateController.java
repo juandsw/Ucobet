@@ -1,5 +1,6 @@
 package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.state;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,16 +12,25 @@ import co.edu.uco.ucobet.generales.application.primaryports.dto.state.ConsultSta
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.state.ConsultStateInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcobetException;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.StateResponse;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 @RestController
 @RequestMapping("/generales/api/v1/states")
-@CrossOrigin(origins="http://localhost:4300")
+//@CrossOrigin(origins="http://localhost:4300")
 public class ConsultStateController {
 
 	private ConsultStateInteractor consultStateInteractor;
 	
+	@Autowired
+	private MessageCatalogService messageCatalogService;
+	
 	public ConsultStateController (ConsultStateInteractor consultStateInteractor) {
 		this.consultStateInteractor =consultStateInteractor;
+	}
+	
+	@GetMapping("/Dummy")
+	public ConsultStateDTO Dummy() {
+		return ConsultStateDTO.create();
 	}
 	
 	@GetMapping
@@ -53,5 +63,6 @@ public class ConsultStateController {
 		
 		return new ResponseEntity<>(stateResponse , httpStatusCode);
 	}
+	
 	
 }

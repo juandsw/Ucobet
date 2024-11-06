@@ -21,6 +21,4 @@ public class Response<T> {
 	public final void setDatos(List<T> datos) {
 		this.datos = datos;
 	}
-	
-
 }

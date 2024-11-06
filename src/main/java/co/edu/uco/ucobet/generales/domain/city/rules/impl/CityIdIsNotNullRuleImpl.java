@@ -9,19 +9,14 @@ import co.edu.uco.ucobet.generales.domain.city.exceptions.CityIdIsNullException;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityIdIsNotNullRule;
 
 @Service
-public class CityIdIsNotNullRuleImpl implements CityIdIsNotNullRule {
+public final class CityIdIsNotNullRuleImpl implements CityIdIsNotNullRule{
 
 	@Override
-	public void execute(UUID data) {
-		
+	public void execute(final UUID data) {
 		if(ObjectHelper.isNull(data)) {
-			
 			throw CityIdIsNullException.create();
-			
 		}
 		
 	}
-	
-	
 
 }

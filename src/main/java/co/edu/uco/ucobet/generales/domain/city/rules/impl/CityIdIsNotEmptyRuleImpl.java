@@ -4,17 +4,19 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.ucobet.generales.domain.city.exceptions.CityIdIsEmptyException;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityIdIsNotEmptyRule;
 
 @Service
-public class CityIdIsNotEmptyRuleImpl implements CityIdIsNotEmptyRule {
+public final class CityIdIsNotEmptyRuleImpl implements CityIdIsNotEmptyRule{
 
 	@Override
 	public void execute(final UUID data) {
-		if(ObjectHelper.isNull(data));
-		throw CityIdIsEmptyException.create();
+		if(UUIDHelper.isDefault(data)) {
+			throw CityIdIsEmptyException.create();
+		}
+		
 	}
 
 }

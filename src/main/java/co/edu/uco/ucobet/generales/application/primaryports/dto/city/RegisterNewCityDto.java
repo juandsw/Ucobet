@@ -17,14 +17,14 @@ public class RegisterNewCityDto {
 		
 	}
 
-	public RegisterNewCityDto(final UUID id, final String name, final UUID state) {
+	public RegisterNewCityDto(final String name, final UUID state) {
 
 		setName(name);
 		setState(state);
 	}
 	
 	public static final RegisterNewCityDto create(final String name, final UUID state) {
-		return new RegisterNewCityDto(UUID.randomUUID(), name, state); // Genera un ID nuevo
+		return new RegisterNewCityDto( name, state);
 	}
 
 	public final UUID getState() {

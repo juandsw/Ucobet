@@ -1,11 +1,10 @@
 package co.edu.uco.ucobet.generales.application.primaryports.mapper;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+
 import org.mapstruct.factory.Mappers;
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.state.ConsultStateDTO;
