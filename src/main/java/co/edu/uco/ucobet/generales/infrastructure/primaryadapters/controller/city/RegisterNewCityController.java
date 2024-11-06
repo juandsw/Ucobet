@@ -2,6 +2,7 @@ package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.ci
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,8 @@ import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.Messag
 
 @RestController
 @RequestMapping("/generales/api/v1/cities")
+@CrossOrigin(origins="http://localhost:4300")
+
 public class RegisterNewCityController {
 	
 	private RegisterNewCityInteractor registerNewCityInteractor;
@@ -26,7 +29,6 @@ public class RegisterNewCityController {
 		
 		this.registerNewCityInteractor = registerNewCityInteractor;
 		this.messageCatalogService = messageCatalogService;
-		
 		
 	}
 	

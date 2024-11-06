@@ -2,7 +2,7 @@ package co.edu.uco.ucobet.generales.domain.city.exceptions;
 
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RuleUcobetException;
 
-public final class CityIdDoesNotExistsExcepcion extends RuleUcobetException {
+public class CityIdDoesNotExistsExcepcion extends RuleUcobetException {
 
 	private static final long serialVersionUID = 1L;
 

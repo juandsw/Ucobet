@@ -6,7 +6,6 @@ import co.edu.uco.ucobet.generales.application.primaryports.dto.city.RegisterNew
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.RegisterNewCityInteractor;
 import co.edu.uco.ucobet.generales.application.primaryports.mapper.RegisterNewCityDtoMapper;
 import co.edu.uco.ucobet.generales.application.usecase.city.RegisterNewCity;
-import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 import jakarta.transaction.Transactional;
 
 @Service

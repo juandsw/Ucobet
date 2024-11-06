@@ -2,8 +2,6 @@ package co.edu.uco.ucobet.generales.application.secondaryports.entity;
 
 import java.util.UUID;
 
-import org.hibernate.annotations.ManyToAny;
-
 import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;

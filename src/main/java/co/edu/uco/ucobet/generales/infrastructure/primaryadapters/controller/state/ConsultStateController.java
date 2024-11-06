@@ -2,6 +2,7 @@ package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.st
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.res
 
 @RestController
 @RequestMapping("/generales/api/v1/states")
+@CrossOrigin(origins="http://localhost:4300")
 public class ConsultStateController {
 
 	private ConsultStateInteractor consultStateInteractor;

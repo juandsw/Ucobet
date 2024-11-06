@@ -4,8 +4,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.azure.security.keyvault.secrets.SecretClient;
 
@@ -32,5 +35,19 @@ public class UcobetApplication implements CommandLineRunner {
 		System.setProperty("password", h2url);
 		System.out.println(h2url);
 
+	}
+	
+	@Bean
+	WebMvcConfigurer corsConfigurer() {
+	    return new WebMvcConfigurer() {
+	        @Override
+	        public void addCorsMappings(CorsRegistry registry) {
+	            registry.addMapping("/**")  // Aplica a todas las rutas
+	                    .allowedOrigins("http://localhost:4300")  // Permite este origen específico
+	                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")  // Incluye 'OPTIONS' para preflight // Permite todos los encabezados necesarios
+	                    .allowCredentials(true)
+	                    .maxAge(3600);
+	        }
+	    };
 	}
 }

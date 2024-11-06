@@ -7,29 +7,44 @@ import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 
 public class ConsultStateDTO {
 	
+	private UUID id;
 	private String name;
 	private UUID country;
 
 	public ConsultStateDTO() {
 		
+		setId(UUIDHelper.getDefault());
 		setName(TextHelper.EMPTY);
 		setCountry(UUIDHelper.getDefault());
 		
 	}
 
-	public ConsultStateDTO(final String name, final UUID state) {
+	public ConsultStateDTO(final UUID id, final String name, final UUID state) {
 		
+		setId(id);
 		setName(name);
 		setCountry(state);
 		
 	}
 
-	public static final ConsultStateDTO create(final String name, final UUID state) {
-		return new ConsultStateDTO(name, state);
+	public static final ConsultStateDTO create(final UUID id, final String name, final UUID state) {
+		return new ConsultStateDTO(id, name, state);
 	}
 	
 	public static final ConsultStateDTO create() {
 		return new ConsultStateDTO();
+	}
+	
+	public UUID getId() {
+		
+		return id;
+		
+	}
+	
+	public void setId(final UUID id) {
+		
+		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
+		
 	}
 
 	public String getName() {

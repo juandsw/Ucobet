@@ -13,8 +13,13 @@ public final class CityIdFormatIsValidRuleImpl implements CityIdFormatIsValidRul
 
 	@Override
 	public final void execute(UUID data) {
-		if(UUIDHelper.isDefault(data));
-		throw CityIdFormatIsValidException.create();
+		
+		if(UUIDHelper.isDefault(data)) {
+			
+			throw CityIdFormatIsValidException.create();
+			
+		}
+		
 	
 	}
 

@@ -4,14 +4,14 @@ import org.springframework.stereotype.Service;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;
-import co.edu.uco.ucobet.generales.domain.city.rules.CityIsAlreadyInUseRule;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityIsNotAlreadyInUseRule;
 
 @Service
-public class CityIsAlreadyInUseRuleImpl implements CityIsAlreadyInUseRule{
+public class CityIsNotAlreadyInUseRuleImpl implements CityIsNotAlreadyInUseRule{
 
 	private CityRepository cityRepository;
 	
-	public CityIsAlreadyInUseRuleImpl(final CityRepository cityRepository) {
+	public CityIsNotAlreadyInUseRuleImpl(final CityRepository cityRepository) {
 		
 		this.cityRepository = cityRepository;
 		

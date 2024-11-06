@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.StateEntity;
 import co.edu.uco.ucobet.generales.application.secondaryports.mapper.CountryEntityMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.StateRepository;
-import co.edu.uco.ucobet.generales.domain.city.exceptions.CityStateIsValidException;
+import co.edu.uco.ucobet.generales.domain.city.exceptions.CityStateIsNotValidException;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityStateIsValidRule;
 import co.edu.uco.ucobet.generales.domain.state.StateDomain;
 
@@ -27,7 +27,7 @@ public class CityStateIsValidRuleImpl implements CityStateIsValidRule {
 		
 		if(!resultado.isEmpty()) {
 			
-			throw CityStateIsValidException.create();
+			throw CityStateIsNotValidException.create();
 			
 			
 		}

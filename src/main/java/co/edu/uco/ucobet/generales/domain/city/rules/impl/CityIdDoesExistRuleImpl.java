@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
-import co.edu.uco.ucobet.generales.domain.city.exceptions.CityIdDoesExistException;
+import co.edu.uco.ucobet.generales.domain.city.exceptions.CityIdDoesNotExistsExcepcion;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityIdDoesExistRule;
 
 @Service
@@ -22,10 +22,11 @@ public class CityIdDoesExistRuleImpl implements CityIdDoesExistRule {
 	}
 
 	@Override
-	public final void execute(final UUID data) {
+	public void execute(UUID data) {
+		
 		if (!cityRepository.existsById(data)) {
 			
-			throw CityIdDoesExistException.create();
+			throw CityIdDoesNotExistsExcepcion.create();
 			
 		}
 		

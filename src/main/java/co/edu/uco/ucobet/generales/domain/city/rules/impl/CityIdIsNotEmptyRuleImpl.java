@@ -9,10 +9,10 @@ import co.edu.uco.ucobet.generales.domain.city.exceptions.CityIdIsEmptyException
 import co.edu.uco.ucobet.generales.domain.city.rules.CityIdIsNotEmptyRule;
 
 @Service
-public final class CityIdIsNotEmptyRuleImpl implements CityIdIsNotEmptyRule {
+public class CityIdIsNotEmptyRuleImpl implements CityIdIsNotEmptyRule {
 
 	@Override
-	public final void execute(final UUID data) {
+	public void execute(final UUID data) {
 		if(ObjectHelper.isNull(data));
 		throw CityIdIsEmptyException.create();
 	}

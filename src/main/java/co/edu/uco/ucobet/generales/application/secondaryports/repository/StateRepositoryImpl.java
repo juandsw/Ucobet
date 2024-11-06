@@ -35,26 +35,24 @@ public class StateRepositoryImpl implements StateRepositoryCustom {
 			
 			if(ObjectHelper.isNull(filter)) {
 				
-				if(!UUIDHelper.isDefault(filter.getId())) {
-					predicates.add(criteriaBuilder.equal(result.get("id"), filter.getId()));
-				}
-				
-				if(!TextHelper.isEmpty(filter.getName())) {
-					predicates.add(criteriaBuilder.equal(result.get("name"), filter.getName()));
-				
-				}
-				
-				if(!ObjectHelper.isNull(filter.getCountry()) && !UUIDHelper.isDefault(filter.getCountry().getId())) {
-					predicates.add(criteriaBuilder.equal(result.get("country"), filter.getCountry()));
-					
-				}	
+                if(!UUIDHelper.isDefault(filter.getId())) {
+                    predicates.add(criteriaBuilder.equal(result.get("id"), filter.getId()));
+                }
+                
+                if(!TextHelper.isEmpty(filter.getName())) {
+                    predicates.add(criteriaBuilder.equal(result.get("name"), filter.getName()));
+                }
+                
+                // Validación correcta del campo 'country' y su 'id'
+                if(!ObjectHelper.isNull(filter.getCountry()) && !UUIDHelper.isDefault(filter.getCountry().getId())) {
+                    predicates.add(criteriaBuilder.equal(result.get("country"), filter.getCountry()));
+                }  
 			
 			}
 			
 			query.select(result).where(criteriaBuilder.and(predicates.toArray(new Predicate[0])));
-			
 			return entityManager.createQuery(query).getResultList();
-			
+
 			
 		} catch (final Exception exception) {
 			
