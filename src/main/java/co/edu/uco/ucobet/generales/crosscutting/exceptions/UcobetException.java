@@ -11,13 +11,14 @@ public class UcobetException extends RuntimeException {
 	private Layer layer;
 	
 	public UcobetException(final String technicalMessage,
-			final String userMessager, final Layer layer,
+			final String userMessage, final Layer layer,
 			final Exception rootException) {
-		super(ObjectHelper.getDefault(technicalMessage, TextHelper.applyTrim(userMessager)),
+		super(ObjectHelper.getDefault(technicalMessage, TextHelper.applyTrim(userMessage)),
 				ObjectHelper.getDefault(rootException, new Exception()));
 		
-		setUserMessage(userMessage);
 		setLayer(layer);
+		setUserMessage(userMessage);
+		
 
 	}
 
@@ -25,7 +26,7 @@ public class UcobetException extends RuntimeException {
 		return userMessage;
 	}
 
-	private final void setUserMessage(final String userMessage) {
+	private final void setUserMessage(String userMessage) {
 		this.userMessage = TextHelper.applyTrim(userMessage);
 	}
 
@@ -52,7 +53,7 @@ public static UcobetException create(final String technicalMessage, final String
 		return new UcobetException(technicalMessage, userMessage, Layer.GENERAL, new Exception());
 	}
 	
-	public static UcobetException create( final String userMessage) {
+	public static UcobetException create(final String userMessage) {
 		
 		return new UcobetException(userMessage, userMessage, Layer.GENERAL, new Exception());
 	}

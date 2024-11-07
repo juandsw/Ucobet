@@ -15,10 +15,10 @@ public class VaultController {
 		this.secretClient = secretClient;
 	}
 
-	@GetMapping("/getSecretValue/{key}")
-	public String getSecretValue(@PathVariable("key") String key) {
-		KeyVaultSecret secret = secretClient.getSecret(key);
-		return secret.getValue();
-	}
+//	@GetMapping("/getSecretValue/{key}")
+//	public String getSecretValue(@PathVariable("key") String key) {
+//		KeyVaultSecret secret = secretClient.getSecret(key);
+//		return secret.getValue();
+//	}
 
 }

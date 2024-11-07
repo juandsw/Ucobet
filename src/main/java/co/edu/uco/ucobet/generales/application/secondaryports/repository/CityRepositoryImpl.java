@@ -25,7 +25,7 @@ public class CityRepositoryImpl implements CityRepositoryCustom{
 
 
 	@Override
-	public List<CityEntity> SelectByFilter(CityEntity filter) {
+	public List<CityEntity> SelectByFilter(final CityEntity filter) {
 		
 		try {
 			var criteriaBuilder = entityManager.getCriteriaBuilder();

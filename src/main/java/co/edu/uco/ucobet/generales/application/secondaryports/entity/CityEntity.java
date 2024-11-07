@@ -52,17 +52,19 @@ public class CityEntity {
 		
 	}
 	
+	public static final CityEntity create(final UUID id, final String name, final StateEntity state) {
+		
+		return new CityEntity(id, name, state);
+		
+	}
+	
 	public static final CityEntity create(final UUID id) {
 		
 		return new CityEntity(id, TextHelper.EMPTY, StateEntity.create());
 		
 	}
 	
-	public static final CityEntity create(final UUID id, final String name, final StateEntity state) {
-		
-		return new CityEntity(id, name, state);
-		
-	}
+	
 	
 
 	public UUID getId() {
@@ -78,7 +80,7 @@ public class CityEntity {
 		return name;
 	}
 
-	public CityEntity setName(String name) {
+	public CityEntity setName(final String name) {
 		this.name = TextHelper.applyTrim(name);
 		return this;
 	}
@@ -87,7 +89,7 @@ public class CityEntity {
 		return state;
 	}
 
-	public CityEntity setState(StateEntity state) {
+	public CityEntity setState(final StateEntity state) {
 		this.state = ObjectHelper.getDefault(state, StateEntity.create());
 		return this;
 	}

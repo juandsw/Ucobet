@@ -21,7 +21,7 @@ public class ConsultStateDTO {
 		
 	}
 
-	public ConsultStateDTO(final UUID id, final String name,  final CountryDTO country) {
+	public ConsultStateDTO(UUID id, String name, CountryDTO country) {
 		
 		setId(id);
 		setName(name);
@@ -29,7 +29,7 @@ public class ConsultStateDTO {
 		
 	}
 
-	public static final ConsultStateDTO create(final UUID id, final String name, final CountryDTO country) {
+	public static final ConsultStateDTO create(UUID id, String name, CountryDTO country) {
 		return new ConsultStateDTO(id, name, country);
 	}
 	
@@ -43,7 +43,7 @@ public class ConsultStateDTO {
 		
 	}
 	
-	public void setId(final UUID id) {
+	public void setId(UUID id) {
 		
 		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
 		
@@ -53,7 +53,7 @@ public class ConsultStateDTO {
 		return name;
 	}
 	
-	public void setName(final String name) {
+	public void setName(String name) {
 		
 		this.name = TextHelper.applyTrim(name);
 		
@@ -64,7 +64,7 @@ public class ConsultStateDTO {
 		return country;
 	}
 
-	public void setCountry(final CountryDTO country) {
+	public void setCountry(CountryDTO country) {
 		
 		this.country = ObjectHelper.getObjectHelper().getDefault(country, CountryDTO.create());
 				

@@ -7,9 +7,8 @@ public final class DtoUcobetException extends UcobetException{
 	
 	private static final long serialVersionUID = 1L;
 
-	public DtoUcobetException(final String technicalMessage, final String userMessager,
-		 final Exception rootException) {
-		super(technicalMessage, userMessager, Layer.DTO, rootException);
+	public DtoUcobetException(final String technicalMessage, final String userMessage, final Exception rootException) {
+		super(technicalMessage, userMessage, Layer.DTO, rootException);
 	}
 	
 	public static final DtoUcobetException create(final String technicalMessage, final String userMessage, final Exception rootException) {

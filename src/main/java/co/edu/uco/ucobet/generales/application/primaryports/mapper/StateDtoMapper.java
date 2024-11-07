@@ -10,7 +10,7 @@ import org.mapstruct.factory.Mappers;
 import co.edu.uco.ucobet.generales.application.primaryports.dto.state.ConsultStateDTO;
 import co.edu.uco.ucobet.generales.domain.state.StateDomain;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface StateDtoMapper {
 	
 	StateDtoMapper INSTANCE = Mappers.getMapper(StateDtoMapper.class);

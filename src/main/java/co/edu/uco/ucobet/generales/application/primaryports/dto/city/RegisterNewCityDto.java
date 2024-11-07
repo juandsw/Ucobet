@@ -21,18 +21,11 @@ public class RegisterNewCityDto {
 
 		setName(name);
 		setState(state);
+		
 	}
 	
 	public static final RegisterNewCityDto create(final String name, final UUID state) {
-		return new RegisterNewCityDto( name, state);
-	}
-
-	public final UUID getState() {
-		return state;
-	}
-	
-	private void setState(final UUID state) {
-		this.state = UUIDHelper.getDefault(state, UUIDHelper.getDefault());
+		return new RegisterNewCityDto(name, state);
 	}
 	
 	public final String getName() {
@@ -42,4 +35,14 @@ public class RegisterNewCityDto {
 	public void setName(final String name) {
 		this.name = TextHelper.applyTrim(name);
 	}
+
+	public UUID getState() {
+		return state;
+	}
+	
+	private void setState(final UUID state) {
+		this.state = UUIDHelper.getDefault(state, UUIDHelper.getDefault());
+	}
+	
+	
 }

@@ -2,6 +2,7 @@ package co.edu.uco.ucobet.generales.application.usecase.city.impl;
 
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
@@ -21,6 +22,9 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 	private RegisterNewCityValidator registerNewCityValidator;
 	private MessageCatalogService messageCatalogService;
 	private NotificationService notificationService;
+	
+	@Value("${emailArrive}")
+    private String emailArrive;
 	
 	public RegisterNewCityImpl(final CityRepository cityRepository, final RegisterNewCityValidator registerNewCityValidator, MessageCatalogService messageCatalogService, NotificationService notificationService) {
 		
@@ -49,9 +53,8 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 		
 		String subject = messageCatalogService.getMessage("subject");
         String content = messageCatalogService.getMessage("content1") + data.getName() + messageCatalogService.getMessage("content2");
-        notificationService.send(messageCatalogService.getMessage("emailArrive"), subject, content);
-		
-		
+        notificationService.send(emailArrive, subject, content);
+        
 	}
 	
 	private final UUID generarIdentificadorCiudad() {

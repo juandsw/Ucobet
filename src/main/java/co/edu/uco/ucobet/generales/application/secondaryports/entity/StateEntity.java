@@ -91,7 +91,7 @@ public class StateEntity {
 		return name;
 	}
 
-	public StateEntity setName(final String name) {
+	public StateEntity setName(String name) {
 		this.name = TextHelper.getDefault(name, TextHelper.EMPTY);
 		return this;
 	}

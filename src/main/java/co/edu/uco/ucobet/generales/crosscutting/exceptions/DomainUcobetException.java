@@ -7,9 +7,9 @@ public final class DomainUcobetException extends UcobetException{
 	
 	private static final long serialVersionUID = 1L;
 
-	public DomainUcobetException(final String technicalMessage, final String userMessager,
+	public DomainUcobetException(final String technicalMessage, final String userMessage,
 		 final Exception rootException) {
-		super(technicalMessage, userMessager, Layer.DOMAIN, rootException);
+		super(technicalMessage, userMessage, Layer.DOMAIN, rootException);
 	}
 	
 	public static final DomainUcobetException create(final String technicalMessage, final String userMessage, final Exception rootException) {

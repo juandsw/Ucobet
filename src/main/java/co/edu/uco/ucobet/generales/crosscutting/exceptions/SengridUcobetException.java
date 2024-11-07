@@ -6,8 +6,7 @@ public class SengridUcobetException extends UcobetException{
 
     private static final long serialVersionUID = 1L;
 
-    public SengridUcobetException(final String userMessage, final String technicalMessage,
-                               final Exception rootException) {
+    public SengridUcobetException(final String userMessage, final String technicalMessage, final Exception rootException) {
     	
         super(userMessage, technicalMessage, Layer.GENERAL, rootException);
         

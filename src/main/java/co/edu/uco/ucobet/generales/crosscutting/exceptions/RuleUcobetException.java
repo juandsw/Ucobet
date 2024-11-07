@@ -7,8 +7,7 @@ public class RuleUcobetException extends UcobetException{
 	
 	private static final long serialVersionUID = 1L;
 
-	public RuleUcobetException(final String technicalMessage, final String userMessage,
-		 final Exception rootException) {
+	public RuleUcobetException(final String technicalMessage, final String userMessage, final Exception rootException) {
 		super(technicalMessage, userMessage, Layer.RULE, rootException);
 	}
 	

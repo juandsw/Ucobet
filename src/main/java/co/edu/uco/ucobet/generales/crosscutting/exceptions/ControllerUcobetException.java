@@ -7,9 +7,9 @@ public final class ControllerUcobetException extends UcobetException{
 	
 	private static final long serialVersionUID = 1L;
 
-	public ControllerUcobetException(final String technicalMessage, final String userMessager,
+	public ControllerUcobetException(final String technicalMessage, final String userMessage,
 		 final Exception rootException) {
-		super(technicalMessage, userMessager, Layer.CONTROLLER, rootException);
+		super(technicalMessage, userMessage, Layer.CONTROLLER, rootException);
 	}
 	
 	public static final ControllerUcobetException create(final String technicalMessage, final String userMessage, final Exception rootException) {
@@ -27,7 +27,7 @@ public final class ControllerUcobetException extends UcobetException{
 		return new ControllerUcobetException(technicalMessage, userMessage, new Exception());
 	}
 	
-	public static final ControllerUcobetException create( final String userMessage) {
+	public static final ControllerUcobetException create(final String userMessage) {
 		
 		return new ControllerUcobetException(userMessage, userMessage, new Exception());
 	}

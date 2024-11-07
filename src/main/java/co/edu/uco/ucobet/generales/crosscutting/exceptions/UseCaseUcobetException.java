@@ -7,9 +7,9 @@ public final class UseCaseUcobetException extends UcobetException{
 	
 	private static final long serialVersionUID = 1L;
 
-	public UseCaseUcobetException(final String technicalMessage, final String userMessager,
+	public UseCaseUcobetException(final String technicalMessage, final String userMessage,
 		 final Exception rootException) {
-		super(technicalMessage, userMessager, Layer.USECASE, rootException);
+		super(technicalMessage, userMessage, Layer.USECASE, rootException);
 	}
 	
 	public static final UseCaseUcobetException create(final String technicalMessage, final String userMessage, final Exception rootException) {

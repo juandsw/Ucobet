@@ -46,19 +46,11 @@ public final class CountryEntity {
 		
 	}
 	
-	public static final CountryEntity create(final UUID id, final String name) {
-		
-		return new CountryEntity(id, name);
-		
-	}
-	
-	
-
-	public final UUID getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public final void setId(final UUID id) {
+	public void setId(final UUID id) {
 		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
 	}
 
