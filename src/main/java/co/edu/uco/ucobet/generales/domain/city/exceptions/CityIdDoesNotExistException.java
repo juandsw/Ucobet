@@ -1,6 +1,7 @@
 package co.edu.uco.ucobet.generales.domain.city.exceptions;
 
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RuleUcobetException;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public final  class CityIdDoesNotExistException extends RuleUcobetException {
 	
@@ -11,8 +12,8 @@ public final  class CityIdDoesNotExistException extends RuleUcobetException {
 	}
 	
 	
-	public static final CityIdDoesNotExistException create() {
-		var userMessage = "No existe la ciudad con el identificador indicado...";
+	public static final CityIdDoesNotExistException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("CityIdDoesNotExistException");
 		return new CityIdDoesNotExistException(userMessage, userMessage, new Exception());
 	}
 

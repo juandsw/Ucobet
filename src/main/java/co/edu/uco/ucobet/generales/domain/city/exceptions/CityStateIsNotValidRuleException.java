@@ -1,6 +1,7 @@
 package co.edu.uco.ucobet.generales.domain.city.exceptions;
 
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RuleUcobetException;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public final  class CityStateIsNotValidRuleException extends RuleUcobetException {
 	
@@ -10,8 +11,8 @@ public final  class CityStateIsNotValidRuleException extends RuleUcobetException
 		super(technicalMessage, userMessager, rootException);
 	}
 	
-	public static final CityStateIsNotValidRuleException create() {
-		var userMessage = "El estado no es valido";
+	public static final CityStateIsNotValidRuleException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("CityStateIsNotValidRuleException");
 		return new CityStateIsNotValidRuleException(userMessage, userMessage, new Exception());
 	}
 

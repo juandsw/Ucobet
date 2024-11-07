@@ -8,13 +8,17 @@ import co.edu.uco.ucobet.generales.application.secondaryports.repository.StateRe
 import co.edu.uco.ucobet.generales.domain.city.exceptions.CityStateIsNotValidRuleException;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityStateIsValidRule;
 import co.edu.uco.ucobet.generales.domain.state.StateDomain;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 @Service
 public final class CityStateIsValidRuleImpl implements CityStateIsValidRule{
+	
 	private StateRepository stateRepository;
+	private MessageCatalogService messageCatalogService;
 
-	public CityStateIsValidRuleImpl(StateRepository stateRepositorY) {
-		this.stateRepository = stateRepositorY;
+	public CityStateIsValidRuleImpl(StateRepository stateRepository) {
+		this.stateRepository = stateRepository;
+		this.messageCatalogService = messageCatalogService;
 	}
 
 	@Override
@@ -25,7 +29,7 @@ public final class CityStateIsValidRuleImpl implements CityStateIsValidRule{
 		var resultado = stateRepository.SelectByFilter(stateEntity);
 
 		if (!resultado.isEmpty()) {
-			throw CityStateIsNotValidRuleException.create();
+			throw CityStateIsNotValidRuleException.create(messageCatalogService);
 		}
 	}
 

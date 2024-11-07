@@ -10,17 +10,19 @@ import co.edu.uco.ucobet.generales.application.usecase.state.ConsultState;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.DataUcobetException;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.domain.state.StateDomain;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 @Service
 public class ConsultStateImpl implements ConsultState {
 
 	private StateRepository stateRepository;
+	private MessageCatalogService messageCatalogService;
 	
-	public ConsultStateImpl(StateRepository stateRepository) {
+	public ConsultStateImpl(StateRepository stateRepository, MessageCatalogService messageCatalogService) {
 		
 		if(ObjectHelper.getObjectHelper().isNull(stateRepository)) {
 			
-			var userMessage = "Se ha presentado un problema para consultar las ciudades";
+			var userMessage = messageCatalogService.getMessage("errorConsult");
 			throw DataUcobetException.create(userMessage);
 		
 		}

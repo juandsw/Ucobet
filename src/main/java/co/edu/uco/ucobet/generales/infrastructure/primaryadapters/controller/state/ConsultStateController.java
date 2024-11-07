@@ -3,7 +3,6 @@ package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.st
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +23,9 @@ public class ConsultStateController {
 	@Autowired
 	private MessageCatalogService messageCatalogService;
 	
-	public ConsultStateController (ConsultStateInteractor consultStateInteractor) {
+	public ConsultStateController (ConsultStateInteractor consultStateInteractor, MessageCatalogService messageCatalogService) {
 		this.consultStateInteractor =consultStateInteractor;
+		this.messageCatalogService = messageCatalogService;
 	}
 	
 	@GetMapping("/Dummy")
@@ -44,7 +44,7 @@ public class ConsultStateController {
 			var consultStateDto = ConsultStateDTO.create();
 			
 			stateResponse.setDatos(consultStateInteractor.execute(consultStateDto));
-			stateResponse.getMensajes().add("Estados consultados exitosamente");
+			stateResponse.getMensajes().add(messageCatalogService.getMessage("consultState"));
 			
 		} catch (UcobetException exception) {
 			
@@ -55,7 +55,7 @@ public class ConsultStateController {
 		} catch (Exception exception) {
 			
 			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-			var mensajeUsuario = "Error al consultar los estados";
+			var mensajeUsuario = messageCatalogService.getMessage("errorConsultState");
 			stateResponse.getMensajes().add(mensajeUsuario);
 			exception.printStackTrace();
 			

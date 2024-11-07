@@ -47,9 +47,9 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 		//Registrar la ciudad
 		cityRepository.save(cityEntity);
 		
-		String subject = "Ciudad creada";
-        String content = "La ciudad " + data.getName() + " fue creada con exito";
-        notificationService.send("juandavidgallegohernandez@gmail.com", subject, content);
+		String subject = messageCatalogService.getMessage("subject");
+        String content = messageCatalogService.getMessage("content1") + data.getName() + messageCatalogService.getMessage("content2");
+        notificationService.send(messageCatalogService.getMessage("emailArrive"), subject, content);
 		
 		
 	}

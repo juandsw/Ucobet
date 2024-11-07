@@ -37,18 +37,18 @@ public class UcobetApplication implements CommandLineRunner {
 
 	}
 	
-//	@Bean
-//	WebMvcConfigurer corsConfigurer() {
-//	    return new WebMvcConfigurer() {
-//	        @Override
-//	        public void addCorsMappings(CorsRegistry registry) {
-//	            registry.addMapping("/**") 
-//	                    .allowedOrigins("http://localhost:4300")  
-//	                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") 
-//	                    .allowedHeaders("*")
-//	                    .allowCredentials(true)
-//	                    .maxAge(3600);
-//	        }
-//	    };
-//	}
+	@Bean
+	WebMvcConfigurer corsConfigurer() {
+	    return new WebMvcConfigurer() {
+	        @Override
+	        public void addCorsMappings(CorsRegistry registry) {
+	            registry.addMapping("/**") 
+	                    .allowedOrigins("http://localhost:4300")  
+	                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") 
+	                    .allowedHeaders("*")
+	                    .allowCredentials(true)
+	                    .maxAge(3600);
+	        }
+	    };
+	}
 }

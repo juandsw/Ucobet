@@ -11,15 +11,18 @@ import co.edu.uco.ucobet.generales.application.primaryports.mapper.StateDtoMappe
 import co.edu.uco.ucobet.generales.application.usecase.state.ConsultState;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.DataUcobetException;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UcobetException;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 @Service
 @Transactional
 public class ConsultStateInteractorImpl implements ConsultStateInteractor {
 
 	private ConsultState consultStateUseCase;
+	private MessageCatalogService messageCatalogService;
 	
-	public ConsultStateInteractorImpl (ConsultState consultStateUseCase) {
+	public ConsultStateInteractorImpl (ConsultState consultStateUseCase, MessageCatalogService messageCatalogService) {
 		this.consultStateUseCase = consultStateUseCase;
+		this.messageCatalogService = messageCatalogService;
 	}
 
 	@Override
@@ -31,9 +34,11 @@ public class ConsultStateInteractorImpl implements ConsultStateInteractor {
 			return StateDtoMapper.INSTANCE.toDtoCollection(resultado);
 			
 		} catch (UcobetException exception) {
-			var userMessage = "Se ha presentado un problema al consultar la información de los estados";
+			var userMessage = messageCatalogService.getMessage("errorConsult");
 			throw DataUcobetException.create(userMessage);
 		}
+		
+		//messageCatalogService.getMessage("welcome")
 	}
 
 }
