@@ -47,36 +47,38 @@ public class RegisterNewCityController {
 	
 	@PostMapping
 	public ResponseEntity<CityResponse> create(@RequestBody RegisterNewCityDto city) {
-		
-		var httpStatusCode = HttpStatus.ACCEPTED;
-		var cityResponse = new CityResponse();
-	
-		try {
-			
-			String sanitizedName = sanitazerService.sanitize(city.getName());
-			RegisterNewCityDto citySanitized = RegisterNewCityDto.create(sanitizedName, city.getState());
-			
-				registerNewCityInteractor.execute(city);
-				cityResponse.getMensajes().add(messageCatalogService.getMessage("createCity"));
-		
-		} catch (final UcobetException exception) {
-			
-			httpStatusCode = HttpStatus.BAD_REQUEST;
-			cityResponse.getMensajes().add(exception.getUserMessage());
-			//cityResponse.getMensajes().add("Error");
-			exception.printStackTrace();
-			
-		} catch (final Exception exception) {
-			
-			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-			var userMessage = messageCatalogService.getMessage("errorCreateCity");
-			cityResponse.getMensajes().add(userMessage);
-			exception.printStackTrace();
-			
-		}
-		
-		return new ResponseEntity<>(cityResponse, httpStatusCode);
-		
+	    
+	    var httpStatusCode = HttpStatus.ACCEPTED;
+	    var cityResponse = new CityResponse();
+
+	    try {
+	        
+	        // Sanitize the name
+	        String sanitizedName = sanitazerService.sanitize(city.getName());
+	        // Create the sanitized city DTO
+	        RegisterNewCityDto citySanitized = RegisterNewCityDto.create(sanitizedName, city.getState());
+	        
+	        // Use the sanitized DTO instead of the original
+	        registerNewCityInteractor.execute(citySanitized);  // Usar 'citySanitized' aquí en lugar de 'city'
+	        cityResponse.getMensajes().add(messageCatalogService.getMessage("createCity"));
+
+	    } catch (final UcobetException exception) {
+	        
+	        httpStatusCode = HttpStatus.BAD_REQUEST;
+	        cityResponse.getMensajes().add(exception.getUserMessage());
+	        exception.printStackTrace();
+	        
+	    } catch (final Exception exception) {
+	        
+	        httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+	        var userMessage = messageCatalogService.getMessage("errorCreateCity");
+	        cityResponse.getMensajes().add(userMessage);
+	        exception.printStackTrace();
+	        
+	    }
+	    
+	    return new ResponseEntity<>(cityResponse, httpStatusCode);
 	}
+
 
 }

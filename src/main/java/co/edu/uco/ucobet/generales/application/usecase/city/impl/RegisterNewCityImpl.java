@@ -42,8 +42,6 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 		registerNewCityValidator.validate(data);
 		
 		var id = generarIdentificadorCiudad();
-		System.out.println(id);
-		System.out.println(data.getState().getId());
 		
 		//Mapper de domain a entity
 		var cityEntity = CityEntity.create().setId(id).setName(data.getName()).setState(StateEntityMapper.INSTANCE.toEntity(data.getState()));

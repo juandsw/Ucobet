@@ -33,15 +33,16 @@ public class TextHelper {
 		return getDefault(string).trim();
 	}
 	
-	public static final String concatenate(String...strings) {
-		final StringBuilder sb = new StringBuilder(EMPTY);
-		if(!ObjectHelper.getObjectHelper().isNull(strings)) {
-			for(final var string : strings) {
-				sb.append(applyTrim(string));
-			}
-		}
-		return sb.toString();
+	public static final String concatenate(String... strings) {
+	    final StringBuilder sb = new StringBuilder(EMPTY);
+	    if (!ObjectHelper.isNull(strings)) {  // Corregido: acceso estático
+	        for (final var string : strings) {
+	            sb.append(applyTrim(string));
+	        }
+	    }
+	    return sb.toString();
 	}
+
     public static final boolean longitudMinima ( final String valor, final int longitudMinima) {
     	return applyTrim(valor).length()>=longitudMinima;
     }

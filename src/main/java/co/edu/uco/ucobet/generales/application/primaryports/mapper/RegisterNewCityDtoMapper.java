@@ -19,7 +19,7 @@ public interface RegisterNewCityDtoMapper {
     // Mapeo de RegisterNewCityDto a CityDomain
 	
     @Mapping(source = "state", target = "state", qualifiedByName = "mapState")
-    
+    @Mapping(target = "id", expression = "java(UUID.randomUUID())")
     CityDomain toDomain(RegisterNewCityDto dto);
 
     // Método personalizado para mapear UUID a StateDomain, anotado con @Named

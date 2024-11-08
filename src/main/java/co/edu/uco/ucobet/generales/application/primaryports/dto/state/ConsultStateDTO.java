@@ -66,11 +66,9 @@ public class ConsultStateDTO {
 
 	public void setCountry(CountryDTO country) {
 		
-		this.country = ObjectHelper.getObjectHelper().getDefault(country, CountryDTO.create());
+		this.country = ObjectHelper.getDefault(country, CountryDTO.create());;
 				
 	
 	}
 	
-	
-
 }

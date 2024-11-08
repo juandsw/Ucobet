@@ -20,7 +20,9 @@ public class ConsultStateImpl implements ConsultState {
 	
 	public ConsultStateImpl(StateRepository stateRepository, MessageCatalogService messageCatalogService) {
 		
-		if(ObjectHelper.getObjectHelper().isNull(stateRepository)) {
+		this.messageCatalogService = messageCatalogService;
+		
+		if(ObjectHelper.isNull(stateRepository)) {
 			
 			var userMessage = messageCatalogService.getMessage("errorConsult");
 			throw DataUcobetException.create(userMessage);
