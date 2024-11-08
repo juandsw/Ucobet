@@ -28,7 +28,7 @@ public final class CityStateIsValidRuleImpl implements CityStateIsValidRule{
 
 		var resultado = stateRepository.SelectByFilter(stateEntity);
 
-		if (!resultado.isEmpty()) {
+		if (resultado.isEmpty()) {
 			throw CityStateIsNotValidRuleException.create(messageCatalogService);
 		}
 	}

@@ -12,6 +12,7 @@ import co.edu.uco.ucobet.generales.domain.city.rules.CityIdDoesNotExistRule;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityIdFormatIsValidRule;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityIdIsNotEmptyRule;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityIdIsNotNullRule;
+import co.edu.uco.ucobet.generales.domain.city.rules.CityIsNotBeingUsedRule;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityNameFormatIsValidRule;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityNameIsNotEmptyRule;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityNameIsNotNullRule;
@@ -50,6 +51,8 @@ public final class RegisterNewCityValidatorImpl implements RegisterNewCityValida
 	private StateIdIsNotNullRule stateIdIsNotNullRule;
 	@Autowired
 	private StateDoesExistRule stateDoesExistRule;
+	@Autowired
+	private CityIsNotBeingUsedRule cityIsNotBeingUsedRule;
 	
 
 	
@@ -61,6 +64,7 @@ public final class RegisterNewCityValidatorImpl implements RegisterNewCityValida
 		try {
 			
 		cityIdDoesNotExistRule.execute(data.getId());
+		cityIsNotBeingUsedRule.execute(data);
 			
 		} catch (CityIdDoesExistException exception) {
 			
@@ -80,6 +84,7 @@ public final class RegisterNewCityValidatorImpl implements RegisterNewCityValida
 		cityIdDoesNotExistRule.execute(id);
 		cityIdFormatIsValidRule.execute(id);
 		cityIdIsNotEmptyRule.execute(id);
+		
 		
 	}
 

@@ -50,11 +50,14 @@ public class RegisterNewCityController {
 		
 		var httpStatusCode = HttpStatus.ACCEPTED;
 		var cityResponse = new CityResponse();
-		
+	
 		try {
 			
-			registerNewCityInteractor.execute(city);
-			cityResponse.getMensajes().add(messageCatalogService.getMessage("createCity"));
+			String sanitizedName = sanitazerService.sanitize(city.getName());
+			RegisterNewCityDto citySanitized = RegisterNewCityDto.create(sanitizedName, city.getState());
+			
+				registerNewCityInteractor.execute(city);
+				cityResponse.getMensajes().add(messageCatalogService.getMessage("createCity"));
 		
 		} catch (final UcobetException exception) {
 			
