@@ -1,9 +1,6 @@
 package co.edu.uco.ucobet.generales.domain.state.rules.impl;
 
 import org.springframework.stereotype.Service;
-
-import co.edu.uco.ucobet.generales.application.secondaryports.entity.StateEntity;
-import co.edu.uco.ucobet.generales.application.secondaryports.repository.StateRepository;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.ucobet.generales.domain.state.StateDomain;

@@ -18,7 +18,6 @@ import co.edu.uco.ucobet.generales.domain.city.rules.CityNameIsNotEmptyRule;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityNameIsNotNullRule;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityNameIsUniqueForStateRule;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityNameLengthIsValidRule;
-import co.edu.uco.ucobet.generales.domain.city.rules.CityStateIsValidRule;
 import co.edu.uco.ucobet.generales.domain.state.StateDomain;
 import co.edu.uco.ucobet.generales.domain.state.rules.StateDoesExistRule;
 import co.edu.uco.ucobet.generales.domain.state.rules.StateIdIsNotNullRule;
@@ -33,8 +32,7 @@ public final class RegisterNewCityValidatorImpl implements RegisterNewCityValida
 	private CityIdFormatIsValidRule cityIdFormatIsValidRule;
 	@Autowired
 	private CityIdIsNotEmptyRule cityIdIsNotEmptyRule;
-	@Autowired
-	private CityStateIsValidRule cityStateIsValidRule;
+	//private CityStateIsValidRule cityStateIsValidRule;
 	@Autowired
 	private CityIdIsNotNullRule cityIdIsNotNullRule;
 	@Autowired

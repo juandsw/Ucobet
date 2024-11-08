@@ -16,7 +16,7 @@ public final class CityStateIsValidRuleImpl implements CityStateIsValidRule{
 	private StateRepository stateRepository;
 	private MessageCatalogService messageCatalogService;
 
-	public CityStateIsValidRuleImpl(StateRepository stateRepository) {
+	public CityStateIsValidRuleImpl(StateRepository stateRepository, MessageCatalogService messageCatalogService) {
 		this.stateRepository = stateRepository;
 		this.messageCatalogService = messageCatalogService;
 	}

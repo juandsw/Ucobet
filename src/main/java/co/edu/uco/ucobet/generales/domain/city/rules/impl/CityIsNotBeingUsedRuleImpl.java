@@ -1,6 +1,5 @@
 package co.edu.uco.ucobet.generales.domain.city.rules.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
@@ -18,7 +17,6 @@ public final class CityIsNotBeingUsedRuleImpl implements CityIsNotBeingUsedRule{
 	private CityRepository cityRepository;
     private MessageCatalogService messageCatalogService;
 
-    @Autowired
     public CityIsNotBeingUsedRuleImpl(CityRepository cityRepository, MessageCatalogService messageCatalogService) {
     	
         this.cityRepository = cityRepository;
